@@ -1,0 +1,27 @@
+# action.yml
+name: 'Resolute-CI-Action'
+description: 'Conduct Resolute analysis on a component of an AADL model'
+inputs:
+  aadl-dir:
+    description: 'The path to the directory containing the AADL projects relative to the GITHUB_WORKSPACE.'
+    default: '.'
+  platform:
+    description: 'The HAMR target platform.
+    default: 'microkit'
+  package-name:
+    description: 'The name of the AADL to translate.  Meaningful only if the platform is not microkit.'
+    default: '.'
+outputs:
+  timestamp:
+    description: 'The date/time that the analysis was completed'
+  status:
+    description: 'Summary of analysis completion status'
+  status-messages: 
+    description: 'Description of analysis completion status'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.aadl-dir }}
+    - ${{ inputs.platform }}
+    - ${{ inputs.package-name }}
