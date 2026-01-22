@@ -1,5 +1,5 @@
 # action.yml
-name: 'Resolute-CI-Action'
+name: 'HAMR-Codegen-CI-Action'
 description: 'Conduct Resolute analysis on a component of an AADL model'
 inputs:
   aadl-dir:
