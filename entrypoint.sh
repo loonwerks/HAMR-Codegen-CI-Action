@@ -90,9 +90,9 @@ EXIT_CODE=$?
 echo "EXIT_CODE = ${EXIT_CODE}"
 echo "RESULTS = ${RESULTS}"
 
-# echo "timestamp=$(jq .date $4)" >> $GITHUB_OUTPUT
-# echo "status=$(jq .status $4)" >> $GITHUB_OUTPUT
-# echo "status-messages=$(jq .statusMessages $4)" >> $GITHUB_OUTPUT
+# echo "timestamp=$(date)" >> $GITHUB_OUTPUT
+# echo "status=${EXIT_CODE}" >> $GITHUB_OUTPUT
+echo "status-messages=${RESULTS}" >> $GITHUB_OUTPUT
 
 ##############################
 
@@ -101,7 +101,16 @@ echo "RESULTS = ${RESULTS}"
 git config --global --add safe.directory /home/runner/work
 pushd ${AADL_DIR} && git checkout CASE_Scheduling.aadl && popd
 echo "Restored CASE_Scheduling.aadl"
- 
+
+# Add the generated code to the git index, commit, and push
+pushd ${AADL_DIR}
+git config --global --add user.name "HAMR-Codegen"
+git config --global --add user.email "HAMR-Codegen"
+git add microkit
+git commit -m "HAMR-Codegen from ${git_branch}.${git_hash}"
+#git push
+popd
+
 #// Running under windows results in 23 which is an indication 
 #// a platform restart was requested. Codegen completes 
 #// successfully and the cli app returns 0 so 
