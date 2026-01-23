@@ -98,7 +98,7 @@ echo "status-messages=${RESULTS}" >> $GITHUB_OUTPUT
 
 #// proc"git checkout HAMR.aadl".at(aadlDir).runCheck()
 #// println("Restored HAMR.aadl")
-git config --global --add safe.directory /home/runner/work
+git config --global --add safe.directory ${GITHUB_WORKSPACE}
 pushd ${AADL_DIR} && git checkout CASE_Scheduling.aadl && popd
 echo "Restored CASE_Scheduling.aadl"
 

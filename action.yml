@@ -7,7 +7,7 @@ inputs:
     default: '.'
   platform:
     description: 'The HAMR target platform.'
-    default: 'microkit'
+    default: 'Microkit'
   package-name:
     description: 'The name of the AADL to translate.  Meaningful only if the platform is not microkit.'
     default: '.'
