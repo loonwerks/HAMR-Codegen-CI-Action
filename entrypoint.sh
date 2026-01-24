@@ -103,12 +103,12 @@ pushd ${AADL_DIR} && git checkout CASE_Scheduling.aadl && popd
 echo "Restored CASE_Scheduling.aadl"
 
 # Add the generated code to the git index, commit, and push
-pushd ${AADL_DIR}
+pushd ${OUTPUT_DIR}
 git config --global --add user.name "HAMR-Codegen"
 git config --global --add user.email "HAMR-Codegen"
 git add microkit
 git commit -m "HAMR-Codegen from ${git_branch}.${git_hash}"
-#git push
+git push
 popd
 
 #// Running under windows results in 23 which is an indication 
