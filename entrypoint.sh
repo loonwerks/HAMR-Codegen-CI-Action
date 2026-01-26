@@ -81,7 +81,7 @@ echo "=== .system ==="
 # echo "Removing HAMR.aadl as that conflicts with the one contributed by the HAMR OSATE plugin"
 # rm -f ${AADL_DIR}/HAMR.aadl
 echo "Removing CASE_Scheduling.aadl as that conflicts with the one contributed by the HAMR OSATE plugin"
-rm -f ${AADL_DIR}/CASE_Scheduling.aadl
+rm -f ${AADL_DIR}/[Cc][Aa][Ss][Ee]_[Ss]cheduling.aadl
 
 echo "OSIREUM_CMD = ${OSIREUM_CMD[@]}"
 RESULTS=$(xvfb-run -e /dev/stdout -s "-screen 0 1280x1024x24 -ac -nolisten tcp -nolisten unix" "${OSIREUM_CMD[@]}" 2>&1)
@@ -99,7 +99,7 @@ echo "status-messages=${RESULTS}" >> $GITHUB_OUTPUT
 #// proc"git checkout HAMR.aadl".at(aadlDir).runCheck()
 #// println("Restored HAMR.aadl")
 git config --global --add safe.directory ${GITHUB_WORKSPACE}
-pushd ${AADL_DIR} && git checkout CASE_Scheduling.aadl && popd
+pushd ${AADL_DIR} && git checkout [Cc][Aa][Ss][Ee]_[Ss]cheduling.aadl && popd
 echo "Restored CASE_Scheduling.aadl"
 
 # Add the generated code to the git index, commit, and push
